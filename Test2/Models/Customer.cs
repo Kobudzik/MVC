@@ -19,6 +19,7 @@ namespace Test2.Models
         public bool IsSubscribetToNewletter { get; set; }
         public MembershipType MembershipType { get; set; }
         
+        //[Display (Name="Date of Birth")]
         public DateTime? Birthdate { get; set; }
     }
 }

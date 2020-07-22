@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Test2.Models;
 using Test2.ViewModels;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure.MappingViews;
 
 namespace Test2.Controllers
 {
@@ -25,7 +26,7 @@ namespace Test2.Controllers
 
         public ViewResult Index()
         {
-            var customers = _context.Customers.Include(c=> c.MembershipType).ToList();
+            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
 
             return View(customers);
         }
@@ -39,6 +40,13 @@ namespace Test2.Controllers
                 return HttpNotFound();
 
             return View(customer);
-        }   
+        }
+
+        public ActionResult New()
+        {
+            return View();
+        }
     }
+
 }
+
