@@ -42,6 +42,7 @@ namespace Test2.Controllers
             return View(customer);
         }
 
+        //html action
         public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
@@ -55,6 +56,7 @@ namespace Test2.Controllers
         }
 
 
+        //form action- changing data
         [HttpPost]
         public ActionResult Save(Customer customer)
         {
@@ -76,6 +78,8 @@ namespace Test2.Controllers
 
             return RedirectToAction("Index", "Customers");
         }
+
+        //html action- showing form
 
         public ActionResult Edit(int id)
         {
