@@ -61,7 +61,7 @@ namespace Test2.Controllers
 
 
 
-        //html action
+        //html action- showing form for adding a new movie
         public ActionResult New()
         {
             var genres = _context.Genres.ToList();
@@ -75,8 +75,28 @@ namespace Test2.Controllers
         }
 
 
+        //html action- showing form for editing a new movie
+        public ActionResult Edit(int id)
+        {
+            var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
 
-        //form action- changing data
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new MovieFormViewModel
+            {
+                Movie = movie,
+                Genres = _context.Genres.ToList()
+            };
+
+            return View("MovieForm", viewModel);
+        }
+
+
+
+        //form action- changing data- save/edit
         [HttpPost]
         public ActionResult Save(Movie movie)
         {
@@ -102,24 +122,7 @@ namespace Test2.Controllers
             return RedirectToAction("Index","Movies");
         }
 
-        //html action- showing form
-        public ActionResult Edit(int id)
-        {
-            var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
-
-            if (movie == null)
-            {
-                return HttpNotFound();
-            }
-
-            var viewModel = new MovieFormViewModel
-            {
-                Movie = movie,
-                Genres = _context.Genres.ToList()
-            };
-
-            return View("MovieForm", viewModel);
-        }
+       
 
 
 

@@ -10,7 +10,7 @@ namespace Test2.Models
     {
         public byte Id { get; set; }
 
-        [Display(Name = "Genre id")]
+        [Display(Name = "Genre id   ")]
         public byte GenreId { get; set; }
 
         public Genre Genre { get; set; }

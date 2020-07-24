@@ -14,7 +14,7 @@ namespace Test2.Models
         public byte MembershipTypeId { get; set; }
 
         //Data Annotation
-        [Required]
+        [Required (ErrorMessage ="Please enter customer's name.")]
         [StringLength(255)]
         public string Name { get; set; }
 
@@ -22,6 +22,7 @@ namespace Test2.Models
         public MembershipType MembershipType { get; set; }
         
         //[Display (Name="Date of Birth")]
+        [Min18YearsIfAMember]
         public DateTime? Birthdate { get; set; }
     }
 }
