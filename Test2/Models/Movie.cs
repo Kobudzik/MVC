@@ -14,8 +14,12 @@ namespace Test2.Models
         public byte GenreId { get; set; }
 
         public Genre Genre { get; set; }
+
+        [Required]
         public string Name { get; set; }
 
+        [Required]
+        [Range(1,20)]
         [Display(Name = "Number in stock")]
         public int NumberInStock { get; set; }
 

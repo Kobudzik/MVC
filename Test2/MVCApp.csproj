@@ -231,6 +231,10 @@
     <Compile Include="Migrations\202007220647489_new.Designer.cs">
       <DependentUpon>202007220647489_new.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007240855208_JustAnUpdate.cs" />
+    <Compile Include="Migrations\202007240855208_JustAnUpdate.Designer.cs">
+      <DependentUpon>202007240855208_JustAnUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
@@ -370,6 +374,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007220647489_new.resx">
       <DependentUpon>202007220647489_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007240855208_JustAnUpdate.resx">
+      <DependentUpon>202007240855208_JustAnUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
