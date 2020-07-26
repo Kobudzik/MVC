@@ -1,7 +1,9 @@
-﻿@model IEnumerable<Test2.Models.Customer>
+﻿@*@model IEnumerable<Test2.Models.Customer>*@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <h2>Customers</h2>
@@ -44,12 +46,12 @@ else
 @section scripts
 {
     <script>
-        //po utworzenie DOM
+        //po utworzeniu DOM
         $(document).ready(function () {
 
             //renderowanie tabeli z API
            var table= $("#customers").DataTable({
-                //pierwszy arg
+                //pierwszy arg- skąd dane
                 ajax: {
                     url: "/api/customers",
                     dataSrc: ""
@@ -59,6 +61,7 @@ else
                 columns: [
                     {
                         data: "name",
+                        //1- value of property (name); 2- type for column; 3- actual object we are rendering
                         render: function (data, type, customer) {
                             return "<a href='/customers/edit/" + customer.id + "'>" + customer.name + "</a>";
                         }
@@ -71,7 +74,8 @@ else
                     {
                         data: "id",
                         render: function (data) {
-                            return "<button class='btn-link js-delete' data-customer-id=" + data + "> Delete </button>";
+                            return "<button class='btn-link js-delete' data-customer-id=" + data + ">Delete</button>";
+
                         }
                     }
                 ]

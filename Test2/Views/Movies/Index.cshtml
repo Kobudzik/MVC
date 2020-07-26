@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Test2.Models.Movie>
+﻿@*@model IEnumerable<Test2.Models.Movie>*@
 
 @{
     ViewBag.Title = "Movies";
@@ -7,22 +7,23 @@
 
 <h2>Movies</h2>
 
-@if (!Model.Any())
+@*@if (!Model.Any())
 {
     <p>We don't have any customers yet.</p>
 }
-else
-{
-    <table class="table table-bordered table-hover">
+else*@
+
+    <table id="movies" class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Movie</th>
                 <th>Genre</th>
+                <th>Delete</th>
             </tr>
         </thead>
 
 
-        <tbody>
+        @*<tbody>
             @foreach (var movie in Model)
             {
                 <tr>
@@ -30,8 +31,77 @@ else
                     <td>@movie.Genre.Name</td>
                 </tr>
             }
-        </tbody>
+        </tbody>*@
     </table>
     <button type="submit" class="btn navbar-btn">@Html.ActionLink("Add a new movie", "New", "Movies")</button>
 
+
+
+@section scripts
+{
+    <script>
+        //po utworzeniu DOM
+        $(document).ready(function () {
+
+
+            //renderowanie tabeli z API
+            var table = $("#movies").DataTable({
+                //pierwszy arg- skąd dane
+                ajax: {
+                    url: "/api/movies",
+                    dataSrc:""
+                },
+                //drugi arg pierwsza kolumna - name and link to edit
+                columns: [
+                    {
+                        data: "name",
+                        //1- value of property (name); 2- type for column; 3- actual object we are rendering
+                        render: function (data, type, movie) {
+                            return "<a href='/movies/edit/" + movie.id + "'>" + movie.name + "</a>";
+                        }
+                    },
+                    //drugi arg druga kolumna
+                    {
+                        data: "genre.name"
+                    },
+                    //drugi arg- trzecia kolumna- delete button
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-movie-id=" + data + ">Delete</button>";
+                        }
+                    }
+                ]            
+            });
+
+
+
+
+
+            $("#movies").on("click", ".js-delete", function () {
+                var button = $(this);
+                console.log("clicked");
+                //wyswietlenie dialogu- komunikat,funkcja
+                bootbox.confirm("Are you sure you want to delete this movie?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/movies/" + button.attr("data-movie-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                            }
+                        });
+                    }
+                });
+
+            });
+
+
+
+
+
+
+
+        });
+    </script>
 }

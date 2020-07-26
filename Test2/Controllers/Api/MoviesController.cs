@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Test2.Dtos;
 using Test2.Models;
+using System.Data.Entity;
 
 namespace Test2.Controllers.Api
 {
@@ -23,7 +24,10 @@ namespace Test2.Controllers.Api
         //GET api/movies
         public IEnumerable<MovieDto> GetMovies()
         {
-            return _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
+            return _context.Movies
+                .Include(g=>g.Genre)
+                .ToList()                
+                .Select(Mapper.Map<Movie, MovieDto>);
         }
 
         

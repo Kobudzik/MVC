@@ -21,5 +21,7 @@ namespace Test2.Dtos
 
         public DateTime DateAdded { get; set; }
         public DateTime ReleaseDate { get; set; }
+        public GenreDto Genre { get; set; }
+
     }
 }
