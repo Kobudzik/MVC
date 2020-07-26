@@ -21,5 +21,6 @@ namespace Test2.Dtos
 
         //[Min18YearsIfAMember]
         public DateTime? Birthdate { get; set; }
+        public MembershipTypeDto MembershipType { get; set; }
     }
 }

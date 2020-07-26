@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Http;
 using Test2.Dtos;
 using Test2.Models;
+using System.Data.Entity;
 
 namespace Test2.Controllers.Api
 {
@@ -29,7 +30,10 @@ namespace Test2.Controllers.Api
         //GET api/customers
         public IEnumerable<CustomerDto> GetCustomers()
         {
-            return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
+            return _context.Customers
+                .Include(c=>c.MembershipType)
+                .ToList()
+                .Select(Mapper.Map<Customer, CustomerDto>);
         }
 
 
