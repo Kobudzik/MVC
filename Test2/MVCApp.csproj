@@ -267,6 +267,10 @@
     <Compile Include="Migrations\202007270947441_AddDrivinLicenseToApplicationUser.Designer.cs">
       <DependentUpon>202007270947441_AddDrivinLicenseToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007271026191_AddedPhoneToUser.cs" />
+    <Compile Include="Migrations\202007271026191_AddedPhoneToUser.Designer.cs">
+      <DependentUpon>202007271026191_AddedPhoneToUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\RoleName.cs" />
@@ -275,6 +279,7 @@
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="ViewModels\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\MovieFormViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\Movie.cs" />
@@ -282,6 +287,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomerFormViewModel.cs" />
     <Compile Include="ViewModels\RandomMovieViewModel.cs" />
+    <Compile Include="ViewModels\RegisterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-lumen-new.css" />
@@ -595,6 +601,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007270947441_AddDrivinLicenseToApplicationUser.resx">
       <DependentUpon>202007270947441_AddDrivinLicenseToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007271026191_AddedPhoneToUser.resx">
+      <DependentUpon>202007271026191_AddedPhoneToUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

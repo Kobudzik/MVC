@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Test2.Models;
+using Test2.ViewModels;
 
 namespace Test2.Controllers
 {
@@ -156,7 +157,8 @@ namespace Test2.Controllers
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    DrivingLicense=model.DrivingLicense
+                    DrivingLicense=model.DrivingLicense,
+                    Phone=model.Phone
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -383,7 +385,8 @@ namespace Test2.Controllers
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    DrivingLicense = model.DrivingLicense
+                    DrivingLicense = model.DrivingLicense,
+                    Phone=model.Phone
                 };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
