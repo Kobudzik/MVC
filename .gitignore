@@ -2,3 +2,4 @@ bin/
 debug/
 .vs/
 packages/
+Startup.Auth.cs
