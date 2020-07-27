@@ -32,9 +32,13 @@ namespace Test2.Controllers
         public ViewResult Index()
         {
 
-            var movies = _context.Movies.Include(m => m.Genre).ToList();
+            //var movies = _context.Movies.Include(m => m.Genre).ToList();
 
-            return View(movies);
+            if (User.IsInRole("CanManageMovies"))
+                return View("List");            
+
+            return View("ReadOnlyList");
+
         }
 
 
@@ -62,6 +66,7 @@ namespace Test2.Controllers
 
 
         //html action- showing form for adding a new movie
+        [Authorize(Roles ="CanManageMovies")]
         public ActionResult New()
         {
             var genres = _context.Genres.ToList();
@@ -76,6 +81,7 @@ namespace Test2.Controllers
 
 
         //html action- showing form for editing a new movie
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Edit(int id)
         {
             var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
@@ -98,6 +104,7 @@ namespace Test2.Controllers
         //form action- changing data- save/edit
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Save(Movie movie)
         {
             if(!ModelState.IsValid)

@@ -30,11 +30,12 @@ namespace Test2.Controllers.Api
                 .Select(Mapper.Map<Movie, MovieDto>);
         }
 
-        
 
- 
+
+
         //add movie
         //POST /api/movies
+        [Authorize(Roles = RoleName.CanManageMovies)]
         [HttpPost]
         public IHttpActionResult CreateMovie(MovieDto movieDto)
         {
@@ -81,6 +82,7 @@ namespace Test2.Controllers.Api
         //update
         //PUT /api/movies/1
         [HttpPut]
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public void UpdateMovie(int id, MovieDto movieDto)
         {
             if (!ModelState.IsValid)
@@ -103,6 +105,7 @@ namespace Test2.Controllers.Api
 
         //DELETE /api/movies/1
         [HttpDelete]
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public void DeleteMovie(int id)
         {
             var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);

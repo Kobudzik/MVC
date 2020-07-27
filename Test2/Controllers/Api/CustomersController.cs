@@ -40,6 +40,7 @@ namespace Test2.Controllers.Api
 
         //add customer
         //POST /api/customers
+        [Authorize(Roles = RoleName.CanManageMovies)]
         [HttpPost]
         public IHttpActionResult CreateCustomer(CustomerDto customerDto)
         {
@@ -80,6 +81,7 @@ namespace Test2.Controllers.Api
 
         //update
         //PUT /api/customers/1
+        [Authorize(Roles = RoleName.CanManageMovies)]
         [HttpPut]
         public void UpdateCustomer(int id, CustomerDto customerDto)
         {
@@ -102,6 +104,7 @@ namespace Test2.Controllers.Api
 
 
         //DELETE /api/customers/1
+        [Authorize(Roles = RoleName.CanManageMovies)]
         [HttpDelete]
         public void DeleteCustomer(int id)
         {
