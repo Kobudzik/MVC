@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "New rental form";
+}
+
+<h2>New rental form</h2>
+
+
+<form>
+    <div class="form-group">
+        <label>Customer</label>
+        <div class="tt-container">
+            <input type="text" id="customer" value="" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Movie</label>
+        <div class="tt-container">
+            <input type="text" value="" class="form-control" id="movie" />
+        </div>
+       </div>
+    <div class="row">
+        <div class="col-md-4" col-sm-4>
+            <ul id="movies" class="list-group"></ul>
+        </div>
+    </div>
+        <button class="btn btn-primary">Submit</button>
+</form>
+
+
+@section scripts
+{
+    <script>
+        //customers auto fill
+        $(document).ready(function () {
+            var vm = {
+                movieIds:[]
+                };
+
+            var customers = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/customers?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#customer').typeahead({
+                minlength: 3,
+                highlight: true
+            }, {
+                name: 'customers',
+                display: 'name',
+                source: customers
+            }).on("typeahead.select", function (e, customer) {
+                vm.customerId = customer.id;
+            });
+
+            /////////////////////////////////
+            //movies auto fill//
+            /////////////////////////////////
+
+            //movies= filmy z query
+            var movies = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/movies?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            //sprawdzania pola movie
+            $('#movie').typeahead({
+                minlength: 3,
+                highlight: true
+            }, {
+                name: 'movies',
+                display: 'name',
+                source: movies
+            }).on("typeahead:select", function (e, movie) {
+                //dodanie na doł strony
+                $("#movies").append("<li class='list-group-item'>" + movie.name + "</li>");
+                //wyczyszczenie inputa
+                $("#movie").typeahead("val", "");
+                //dodanie do zmiennej
+                vm.movieIds.push(movie.id);
+            });
+
+
+
+
+
+
+        });
+    </script>
+}

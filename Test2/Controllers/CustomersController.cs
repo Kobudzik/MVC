@@ -7,6 +7,7 @@ using Test2.Models;
 using Test2.ViewModels;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure.MappingViews;
+using System.Runtime.Caching;
 
 namespace Test2.Controllers
 {
@@ -26,6 +27,12 @@ namespace Test2.Controllers
 
         public ViewResult Index()
         {
+            if(MemoryCache.Default["Genres"] ==null)
+            {
+                MemoryCache.Default["Genres"] = _context.Genres.ToList();
+            }
+
+            var genres = MemoryCache.Default["Genres"] as IEnumerable<Genre>;
             //var customers = _context.Customers.Include(c => c.MembershipType).ToList();
 
             return View(/*customers*/);
@@ -64,6 +71,7 @@ namespace Test2.Controllers
         [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Save(Customer customer)
         {
+            //validation
             if(!ModelState.IsValid)
             {
                 var viewModel = new CustomerFormViewModel
@@ -73,10 +81,13 @@ namespace Test2.Controllers
                 };
                 return View("CustomerForm", viewModel);
             }
+
             if (customer.Id == 0)
+                //dodanie klienta
                 _context.Customers.Add(customer);
             else
             {
+                //edycja klienta
                 var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
                 //TryUpdateModel(customerInDb, "", new string[] { "Name, Email"});
                 //Mapper.Map(customer, customerInDb);

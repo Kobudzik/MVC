@@ -8,7 +8,7 @@ namespace Test2.Models
 {
     public class Movie
     {
-        public byte Id { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "Genre id   ")]
         public byte GenreId { get; set; }
@@ -21,7 +21,13 @@ namespace Test2.Models
         [Required]
         [Range(1,20)]
         [Display(Name = "Number in stock")]
-        public int NumberInStock { get; set; }
+        public byte? NumberInStock { get; set; }
+
+
+        [Required]
+        [Range(0, 20)]
+        [Display(Name = "Number available")]
+        public int NumberAvailable { get; set; }
 
         [Display(Name = "Date added")]
         public DateTime DateAdded { get; set; }
