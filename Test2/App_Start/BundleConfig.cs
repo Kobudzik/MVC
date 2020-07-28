@@ -13,7 +13,6 @@ namespace Test2
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/bootbox.js",
                         "~/Scripts/datatables/jquery.datatables.js",
-                        "~/Scripts/typeahead.bundle.js",
                         "~/Script/datatables/datatables.bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -29,8 +28,7 @@ namespace Test2
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-lumen-new.css",
                       "~/Content/datatables/css/datatables.bootstrap.css",
-                      "~/content/site.css",
-                      "~/Content/typeahead.css"));
+                      "~/Content/site.css"));
         }
     }
 }

@@ -31,12 +31,14 @@ namespace Test2.Controllers
 
         public ViewResult Index()
         {
+
             //var movies = _context.Movies.Include(m => m.Genre).ToList();
 
             if (User.IsInRole("CanManageMovies"))
                 return View("List");            
 
             return View("ReadOnlyList");
+
         }
 
 
@@ -103,38 +105,39 @@ namespace Test2.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = RoleName.CanManageMovies)]
-
         public ActionResult Save(Movie movie)
         {
-            if (!ModelState.IsValid)
+            if(!ModelState.IsValid)
             {
                 var viewModel = new MovieFormViewModel(movie)
                 {
                     Genres = _context.Genres.ToList()
                 };
-
                 return View("MovieForm", viewModel);
             }
 
+
+
             if (movie.Id == 0)
-            //dodanie filmu
             {
                 movie.DateAdded = DateTime.Now;
                 _context.Movies.Add(movie);
             }
             else
             {
-                //edycja filmu
                 var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
-                movieInDb.Name = movie.Name;
+                movieInDb.Name=movie.Name;
                 movieInDb.GenreId = movie.GenreId;
                 movieInDb.NumberInStock = movie.NumberInStock;
                 movieInDb.ReleaseDate = movie.ReleaseDate;
             }
-
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Movies");
+
+            if (movie == null)
+                return HttpNotFound();
+
+            return RedirectToAction("Index","Movies");
         }
 
     }

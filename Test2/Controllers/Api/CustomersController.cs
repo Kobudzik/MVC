@@ -28,24 +28,12 @@ namespace Test2.Controllers.Api
 
         //show customerS
         //GET api/customers
-        public IHttpActionResult GetCustomers(string query=null)
+        public IEnumerable<CustomerDto> GetCustomers()
         {
-            //wybranie klientow z joinem na membership type
-            var customersQuery = _context.Customers
-                .Include(c => c.MembershipType);
-               
-            //jeśli jest parametr
-            if(!String.IsNullOrWhiteSpace(query))
-            {
-                //filtruje wyniki
-                customersQuery = customersQuery.Where(c => c.Name.Contains(query));
-            }
-
-            var customerDtos=customersQuery
+            return _context.Customers
+                .Include(c=>c.MembershipType)
                 .ToList()
                 .Select(Mapper.Map<Customer, CustomerDto>);
-
-            return Ok(customerDtos);
         }
 
 

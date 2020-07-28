@@ -9,7 +9,7 @@ namespace Test2.Dtos
 {
     public class MovieDto
     {
-        public int Id { get; set; }
+        public byte Id { get; set; }
         public byte GenreId { get; set; }
 
         [Required]
