@@ -28,5 +28,8 @@ namespace Test2.Models
 
         [Display (Name="Release date")]
         public DateTime ReleaseDate { get; set; }
+
+        public byte NumberAvailable { get; set; }
+
     }
 }

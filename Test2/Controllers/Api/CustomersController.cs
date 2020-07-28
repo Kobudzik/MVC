@@ -28,33 +28,19 @@ namespace Test2.Controllers.Api
 
         //show customerS
         //GET api/customers
-        public IEnumerable<CustomerDto> GetCustomers()
+        public IHttpActionResult GetCustomers(string query = null)
         {
-            return _context.Customers
-                .Include(c=>c.MembershipType)
+            var customersQuery = _context.Customers
+                .Include(c => c.MembershipType);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                customersQuery = customersQuery.Where(c => c.Name.Contains(query));
+
+            var customerDtos = customersQuery
                 .ToList()
                 .Select(Mapper.Map<Customer, CustomerDto>);
-        }
 
-
-
-        //add customer
-        //POST /api/customers
-        [Authorize(Roles = RoleName.CanManageMovies)]
-        [HttpPost]
-        public IHttpActionResult CreateCustomer(CustomerDto customerDto)
-        {
-            if (!ModelState.IsValid)
-                //throw new HttpResponseException(HttpStatusCode.BadRequest);
-                return BadRequest();
-
-            var customer = Mapper.Map<CustomerDto, Customer>(customerDto);
-            _context.Customers.Add(customer);
-            _context.SaveChanges();
-
-            customerDto.Id = customer.Id;
-            //return customerDto;
-            return Created(new Uri(Request.RequestUri + "/" + customer.Id), customerDto);
+            return Ok(customerDtos);
         }
 
 
@@ -63,9 +49,10 @@ namespace Test2.Controllers.Api
 
 
 
-        //show one customer
-        //GET api/customers/1
-        public IHttpActionResult GetCustomer(int id)
+
+            //show one customer
+            //GET api/customers/1
+            public IHttpActionResult GetCustomer(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
 

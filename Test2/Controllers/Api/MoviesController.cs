@@ -22,11 +22,18 @@ namespace Test2.Controllers.Api
 
         //GET ALL MOVIES
         //GET api/movies
-        public IEnumerable<MovieDto> GetMovies()
+        public IEnumerable<MovieDto> GetMovies(string query = null)
         {
-            return _context.Movies
-                .Include(g=>g.Genre)
-                .ToList()                
+            var moviesQuery = _context.Movies
+                .Include(m => m.Genre)
+                .Where(m => m.NumberAvailable > 0);
+
+            //jeśli jest arg
+            if (!String.IsNullOrWhiteSpace(query))
+                moviesQuery = moviesQuery.Where(m => m.Name.Contains(query));
+
+            return moviesQuery
+                .ToList()
                 .Select(Mapper.Map<Movie, MovieDto>);
         }
 
