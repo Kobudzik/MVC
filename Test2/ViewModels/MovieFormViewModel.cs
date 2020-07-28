@@ -10,7 +10,7 @@ namespace Test2.ViewModels
     public class MovieFormViewModel
     {
 
-        public byte? Id { get; set; }
+        public int? Id { get; set; }
 
         [Display(Name = "Genre id   ")]
         public byte? GenreId { get; set; }

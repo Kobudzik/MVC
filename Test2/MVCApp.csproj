@@ -235,33 +235,17 @@
     <Compile Include="Migrations\202007220511455_AddedBirthDatetoOneClient.Designer.cs">
       <DependentUpon>202007220511455_AddedBirthDatetoOneClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202007220641502_test3.cs" />
-    <Compile Include="Migrations\202007220641502_test3.Designer.cs">
-      <DependentUpon>202007220641502_test3.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202007220642332_test5.cs" />
     <Compile Include="Migrations\202007220642332_test5.Designer.cs">
       <DependentUpon>202007220642332_test5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202007220643462_AddData.cs" />
-    <Compile Include="Migrations\202007220643462_AddData.Designer.cs">
-      <DependentUpon>202007220643462_AddData.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202007220647489_new.cs" />
     <Compile Include="Migrations\202007220647489_new.Designer.cs">
       <DependentUpon>202007220647489_new.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202007240855208_JustAnUpdate.cs" />
-    <Compile Include="Migrations\202007240855208_JustAnUpdate.Designer.cs">
-      <DependentUpon>202007240855208_JustAnUpdate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202007270712090_SeedUsers.cs" />
     <Compile Include="Migrations\202007270712090_SeedUsers.Designer.cs">
       <DependentUpon>202007270712090_SeedUsers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202007270755574_seed2.cs" />
-    <Compile Include="Migrations\202007270755574_seed2.Designer.cs">
-      <DependentUpon>202007270755574_seed2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202007270947441_AddDrivinLicenseToApplicationUser.cs" />
     <Compile Include="Migrations\202007270947441_AddDrivinLicenseToApplicationUser.Designer.cs">
@@ -270,6 +254,10 @@
     <Compile Include="Migrations\202007271026191_AddedPhoneToUser.cs" />
     <Compile Include="Migrations\202007271026191_AddedPhoneToUser.Designer.cs">
       <DependentUpon>202007271026191_AddedPhoneToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007281132165_DatabaseFix.cs" />
+    <Compile Include="Migrations\202007281132165_DatabaseFix.Designer.cs">
+      <DependentUpon>202007281132165_DatabaseFix.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Min18YearsIfAMember.cs" />
@@ -578,32 +566,23 @@
     <EmbeddedResource Include="Migrations\202007220511455_AddedBirthDatetoOneClient.resx">
       <DependentUpon>202007220511455_AddedBirthDatetoOneClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202007220641502_test3.resx">
-      <DependentUpon>202007220641502_test3.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007220642332_test5.resx">
       <DependentUpon>202007220642332_test5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202007220643462_AddData.resx">
-      <DependentUpon>202007220643462_AddData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007220647489_new.resx">
       <DependentUpon>202007220647489_new.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202007240855208_JustAnUpdate.resx">
-      <DependentUpon>202007240855208_JustAnUpdate.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007270712090_SeedUsers.resx">
       <DependentUpon>202007270712090_SeedUsers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202007270755574_seed2.resx">
-      <DependentUpon>202007270755574_seed2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007270947441_AddDrivinLicenseToApplicationUser.resx">
       <DependentUpon>202007270947441_AddDrivinLicenseToApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007271026191_AddedPhoneToUser.resx">
       <DependentUpon>202007271026191_AddedPhoneToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007281132165_DatabaseFix.resx">
+      <DependentUpon>202007281132165_DatabaseFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
