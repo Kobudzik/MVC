@@ -1,6 +1,6 @@
 ## General info
 
-  This is a very basic video rental shop's website.
+  This is a video rental shop's website with CRUD operations and RESTful API.
     
 ## Technologies
 Project is created with:
