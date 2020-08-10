@@ -1,6 +1,6 @@
 ## General info
 
-  This is a very basic Video rental shop's Website.
+  This is a very basic video rental shop's website.
     
 ## Technologies
 Project is created with:
