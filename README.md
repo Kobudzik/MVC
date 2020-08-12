@@ -20,3 +20,13 @@ Project was created using:
 * Client side validation
 * Logging in (different operations available for Admin and other users)
 * Create new rental
+
+## Screenshot
+This is how customes page look:
+
+![Customers page](https://i.ibb.co/xYwQ4k3/Customers-page.png)
+
+
+Here is preview of TypeAhead
+
+![Typeahead](https://i.ibb.co/HC2ZZXm/Typeahead-preview.png)
